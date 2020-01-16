@@ -7,42 +7,51 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 public class Application {
 
-     @Autowired
-     @Qualifier("divOperation")
+     private Map<Integer, Operation> operationMap;
+
+     final
      Operation div;
      
-     @Autowired
-     @Qualifier("sumOperation")
+     final
      Operation sum;
      
-     @Autowired
-     @Qualifier("subOperation")
+     final
      Operation sub;
      
-     @Autowired
-     @Qualifier("multOperation")
+     final
      Operation mult;
      
-     @Autowired
-     @Qualifier("stopApplication")
+     final
      Operation stop;
      
-     private Map<Integer, Operation> operationMap = new HashMap<Integer, Operation>() {
-          {
-               this.put(1, sum);
-               this.put(2, sub);
-               this.put(3, mult);
-               this.put(4, div);
-               this.put(0, stop);
-          }
-     };
-     
+     @PostConstruct
+     public void init(){
+           operationMap = new HashMap<Integer, Operation>() {
+               {
+                    this.put(1, sum);
+                    this.put(2, sub);
+                    this.put(3, mult);
+                    this.put(4, div);
+                    this.put(0, stop);
+               }
+          };
+     }
+
+     public Application(@Qualifier("divOperation") Operation div, @Qualifier("sumOperation") Operation sum, @Qualifier("subOperation") Operation sub, @Qualifier("multOperation") Operation mult, @Qualifier("stopApplication") Operation stop) {
+          this.div = div;
+          this.sum = sum;
+          this.sub = sub;
+          this.mult = mult;
+          this.stop = stop;
+     }
+
      public void start() {
           System.out.println("Добро пожаловать!");
           run();

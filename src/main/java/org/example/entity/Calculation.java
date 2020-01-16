@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Calculation {
-
      public void divOperation(Double a, Double b) {
           double result = a / b;
           System.out.println("Ваш результат = " + result);
