@@ -3,7 +3,6 @@ package org.example.applications;
 import org.example.applications.exception.StopApplicationException;
 import org.example.applications.operations.*;
 import org.example.applications.utils.Input;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 

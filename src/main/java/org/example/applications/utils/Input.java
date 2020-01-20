@@ -1,6 +1,5 @@
 package org.example.applications.utils;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -13,7 +12,7 @@ public class Input {
           if (scanner.hasNextInt()){
                return scanner.nextInt();
           }
-          scanner.next("[\\d]+");
+          scanner.next();
           System.out.println("Это не число. Повторите ввод");
           return getInt();
      }
