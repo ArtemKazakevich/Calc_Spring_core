@@ -21,13 +21,4 @@ public class Input {
           System.out.println(message);
           return getInt();
      }
-     
-     public static String getString(){
-          return scanner.next();
-     }
-     
-     public static String getString(String message){
-          System.out.println(message);
-          return getString();
-     }
 }
